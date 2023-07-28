@@ -10,6 +10,12 @@
 </head>
 <body>
     <div class="container">
+
+        {{-- ログイン失敗のメッセージ --}}
+        <x-alert type="danger" :session="session('login_error')" />
+        {{-- ログアウト成功のメッセージ --}}
+        <x-alert type="primary" :session="session('logout')" />
+
         <form method="POST" action="{{route('login')}}">
             @csrf
 
