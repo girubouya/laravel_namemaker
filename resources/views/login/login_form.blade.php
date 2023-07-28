@@ -20,10 +20,10 @@
             @csrf
 
             <h1 class="mb-3">ログインフォーム</h1>
-            <label for="inputEmail" class="sr-onry">Email</label>
-            <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email" autofocus>
-            @if ($errors->has('email'))
-                @foreach ($errors->get('email') as $error)
+            <label for="inputEmail" class="sr-onry">Name</label>
+            <input type="text" id="inputEmail" class="form-control" name="name" placeholder="Name" autofocus>
+            @if ($errors->has('name'))
+                @foreach ($errors->get('name') as $error)
                     <p class="alert alert-danger">{{$error}}</p>
                 @endforeach
             @endif

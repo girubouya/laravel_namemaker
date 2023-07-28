@@ -20,7 +20,7 @@ class AuthController extends Controller
      * @param App\Http\Requests\LoginFormRequest $request
      */
     public function login(LoginFormRequest $request){
-        $credentials = $request->only('email','password');
+        $credentials = $request->only('name','password');
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
