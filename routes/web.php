@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\NameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,5 @@ Route::group(['middleware'=>['auth']],function(){
     });
 
     Route::post('/logout',[AuthController::class,'logout'])->name('logout');
-    Route::post('/home',[NameController::class,'addName'])->name('addName');
+    // Route::post('/home',[NameController::class,'addName'])->name('addName');
 });

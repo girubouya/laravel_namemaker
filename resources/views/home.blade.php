@@ -34,13 +34,12 @@
                     <div style="width: 300px; height:80px; line-height:80px" class="border border-dark rounded">
                         <p class="text-center fs-4">aaaa</p>
                     </div>
-                    <button class="btn btn-primary mt-4" style="width: 100px">出力</button>
+                    {{-- <a href="{{route('addName')}}" class="btn btn-primary mt-4" style="width: 100px">出力</a> --}}
                 </div>
                 <div class="text-center">
                     <div style="width: 300px; height:80px; line-height:80px" class="border border-dark rounded">
                         <p class="text-center fs-4">aaaa</p>
                     </div>
-                    <button class="btn btn-primary mt-4" style="width: 100px">出力</button>
                 </div>
             </div>
 
