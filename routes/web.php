@@ -28,5 +28,8 @@ Route::group(['middleware'=>['auth']],function(){
     })->name('home');
 
     Route::post('/logout',[AuthController::class,'logout'])->name('logout');
-    Route::post('/home',[NameController::class,'addName'])->name('addName');
+    Route::post('/home',[NameController::class,'outputName'])->name('outputName');
+    Route::get('/addName',[NameController::class,'addName'])->name('addName');
+    Route::post('/addName',[NameController::class,'DBaddName'])->name('DBaddName');
+    Route::get('/hideName',[NameController::class,'hideName'])->name('hideName');
 });

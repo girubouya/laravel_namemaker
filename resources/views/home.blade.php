@@ -24,7 +24,7 @@
             <h1 class="text-center fw-bold">NameMaker</h1>
             {{-- メニュー --}}
             <div class="text-end">
-                <a href="" class="btn btn-primary">名前登録</a>
+                <a href="{{route('addName')}}" class="btn btn-primary">名前登録</a>
                 <a href="" class="btn btn-primary">登録一覧</a>
             </div>
 
@@ -41,10 +41,16 @@
                         @endif
                     </div>
                     {{-- ボタン --}}
-                    <form action="{{route('addName')}}" method="POST">
+                    <form action="{{route('outputName')}}" method="POST">
                         @csrf
                         <input type="hidden" name="leftRight" value="0">
                         <button class="btn btn-primary mt-4" style="width: 100px">出力</button>
+                    </form>
+                </div>
+
+                <div>
+                    <form action="{{route('hideName')}}" method="GET">
+                        <button type="submit" class="btn btn-warning">両方消す</button>
                     </form>
                 </div>
                 {{-- 右の名前 --}}
@@ -58,7 +64,7 @@
                         @endif
                     </div>
                     {{-- ボタン --}}
-                    <form action="{{route('addName')}}" method="POST">
+                    <form action="{{route('outputName')}}" method="POST">
                         @csrf
                         <input type="hidden" name="leftRight" value="1">
                         <button class="btn btn-primary mt-4" style="width: 100px">出力</button>

@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\AddNameRequest;
 use App\Models\Name;
 
 class NameController extends Controller
 {
-    public function addName(Request $request){
+    /**
+     * 名前を出力する
+     * @param Illuminate\Http\Request $request
+     * @param App\Models\Name
+     */
+    public function outputName(Request $request){
         //押されたボタンが左(0)か右(1)か
         $leftRight = $request->leftRight;
         //NameDBからランダムに1つデータを取得
@@ -20,6 +26,42 @@ class NameController extends Controller
             session()->put('rightName',$name->name);
         }
         //homeにリダイレクト
+        return redirect()->route('home');
+    }
+
+    /**
+     * 名前登録画面 view
+     */
+    public function addName(){
+        return view('name.add');
+    }
+
+    /**
+     * nameDBに名前を登録
+     * @param App\Http\Requests\AddNameRequest $request
+     * @param App\Models\Name
+     */
+    public function DBaddName(AddNameRequest $request){
+
+        $inputData = [
+            'name'=>$request->name,
+            'leftRight'=>$request->leftRight,
+            'nameCount'=>mb_strlen($request->name),
+        ];
+
+        $name = new Name;
+        $name->fill($inputData)->save();
+
+        return redirect()->route('addName')->with('message','登録しました！');
+    }
+
+    /**
+     * 名前を隠す
+     */
+    public function hideName(){
+        session()->forget('leftName');
+        session()->forget('rightName');
+
         return redirect()->route('home');
     }
 }
