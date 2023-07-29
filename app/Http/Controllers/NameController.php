@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddNameRequest;
 use App\Models\Name;
+use Illuminate\Support\Facades\Auth;
 
 class NameController extends Controller
 {
@@ -42,9 +43,10 @@ class NameController extends Controller
      * @param App\Models\Name
      */
     public function DBaddName(AddNameRequest $request){
-
+        
         $inputData = [
             'name'=>$request->name,
+            'user_id'=>Auth::id(),
             'leftRight'=>$request->leftRight,
             'nameCount'=>mb_strlen($request->name),
         ];

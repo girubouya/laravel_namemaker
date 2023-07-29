@@ -77,6 +77,6 @@ class AuthController extends Controller
         $user = new User;
         $user->fill($inputData)->save();
 
-        return redirect()->route('login.show');
+        return redirect()->route('login.show')->with('message','登録できました！');
     }
 }

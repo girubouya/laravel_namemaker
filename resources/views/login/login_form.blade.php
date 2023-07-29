@@ -15,6 +15,8 @@
         <x-alert type="danger" :session="session('login_error')" />
         {{-- ログアウト成功のメッセージ --}}
         <x-alert type="primary" :session="session('logout')" />
+        {{-- ユーザー登録成功メッセージ --}}
+        <x-alert type="primary" :session="session('message')" />
 
         <form method="POST" action="{{route('login')}}">
             @csrf

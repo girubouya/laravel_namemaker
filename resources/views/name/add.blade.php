@@ -30,9 +30,9 @@
             <a href="{{route('home')}}" class="btn btn-primary mt-3">戻る</a>
         </form>
 
-        @if (session('message'))
-            <p class="alert alert-primary">{{session('message')}}</p>
-        @endif
+        {{-- ユーザー登録成功メッセージ --}}
+        <x-alert type="primary" :session="session('message')" />
+
     </div>
 </body>
 </html>

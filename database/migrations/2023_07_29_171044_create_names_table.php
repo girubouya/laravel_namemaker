@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('names', function (Blueprint $table) {
             $table->increments('id');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('name',50);
             $table->integer('leftRight');
             $table->integer('nameCount');
             $table->timestamps();
+
+
         });
     }
 
