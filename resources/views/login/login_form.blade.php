@@ -35,6 +35,7 @@
             @endif
 
             <button class="btn btn-primary mt-3" type="submit">ログイン</button>
+            <a href="{{route('addUser')}}" class="btn btn-primary mt-3">新規登録</a>
         </form>
     </div>
 </body>

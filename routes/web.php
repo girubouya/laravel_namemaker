@@ -15,8 +15,10 @@ use App\Http\Controllers\Auth\AuthController;
 */
 
 Route::group(['middleware'=>['guest']],function(){
-    Route::get('/',[AuthController::class,'showLogin'])->name('showLogin');
+    Route::get('/',[AuthController::class,'showLogin'])->name('login.show');
     Route::post('/login',[AuthController::class,'login'])->name('login');
+    Route::get('/addUser',[AuthController::class,'addUser'])->name('addUser');
+    Route::post('/addUser',[AuthController::class,'DBaddUser'])->name('DBaddUser');
 });
 
 Route::group(['middleware'=>['auth']],function(){

@@ -5,11 +5,15 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginFormRequest;
+use App\Http\Requests\AddUserRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
     /*
+        ログイン画面表示
         @return View
     */
     public function showLogin(){
@@ -17,6 +21,7 @@ class AuthController extends Controller
     }
 
     /**
+     * ログイン処理
      * @param App\Http\Requests\LoginFormRequest $request
      */
     public function login(LoginFormRequest $request){
@@ -34,6 +39,7 @@ class AuthController extends Controller
     }
 
     /**
+     * ログアウト処理
      * @param \Illuminate\Http\Request $request
      * @param \Illuminate\Http\Response
      */
@@ -45,6 +51,32 @@ class AuthController extends Controller
         //セッションを作り直す
         $request->session()->regenerateToken();
 
-        return redirect()->route('showLogin')->with('logout','ログアウト成功');
+        return redirect()->route('login.show')->with('logout','ログアウト成功');
+    }
+
+    /*
+     *新規ユーザー登録
+     */
+    public function addUser(){
+        return view('login.add');
+    }
+
+    /**
+     * DBにユーザー情報を登録
+     * @param \App\Http\Requests\AddUserRequest $request
+     * @param \Illuminate\Support\Facades\Hash
+     * @param \App\Models\User
+     */
+    public function DBaddUser(AddUserRequest $request){
+        $inputData = [
+            'name'=>$request->name,
+            'email'=>$request->mail,
+            'password'=>Hash::make($request->password),
+        ];
+
+        $user = new User;
+        $user->fill($inputData)->save();
+
+        return redirect()->route('login.show');
     }
 }
