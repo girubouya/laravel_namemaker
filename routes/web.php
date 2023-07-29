@@ -27,4 +27,5 @@ Route::group(['middleware'=>['auth']],function(){
     });
 
     Route::post('/logout',[AuthController::class,'logout'])->name('logout');
+    Route::post('/home',[NameController::class,'addName'])->name('addName');
 });
