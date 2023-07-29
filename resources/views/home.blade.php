@@ -30,16 +30,39 @@
 
             {{-- 名前表示 --}}
             <div class="d-flex justify-content-evenly mt-5">
+                {{-- 左の名前 --}}
                 <div class="text-center">
+                    {{-- 名前表示 --}}
                     <div style="width: 300px; height:80px; line-height:80px" class="border border-dark rounded">
-                        <p class="text-center fs-4">aaaa</p>
+                        @if (session()->has('leftName'))
+                            <p class="text-center fs-4">
+                                {{session()->get('leftName')}}
+                            </p>
+                        @endif
                     </div>
-                    {{-- <a href="{{route('addName')}}" class="btn btn-primary mt-4" style="width: 100px">出力</a> --}}
+                    {{-- ボタン --}}
+                    <form action="{{route('addName')}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="leftRight" value="0">
+                        <button class="btn btn-primary mt-4" style="width: 100px">出力</button>
+                    </form>
                 </div>
+                {{-- 右の名前 --}}
                 <div class="text-center">
+                    {{-- 右の名前表示 --}}
                     <div style="width: 300px; height:80px; line-height:80px" class="border border-dark rounded">
-                        <p class="text-center fs-4">aaaa</p>
+                        @if (session()->has('rightName'))
+                            <p class="text-center fs-4">
+                                {{session()->get('rightName')}}
+                            </p>
+                        @endif
                     </div>
+                    {{-- ボタン --}}
+                    <form action="{{route('addName')}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="leftRight" value="1">
+                        <button class="btn btn-primary mt-4" style="width: 100px">出力</button>
+                    </form>
                 </div>
             </div>
 
