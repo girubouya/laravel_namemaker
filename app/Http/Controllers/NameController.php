@@ -78,4 +78,35 @@ class NameController extends Controller
 
         return view('name.index',compact('registers'));
     }
+
+    /**
+     * 編集画面
+     * @param Illuminate\Http\Request $request
+     * @param App\Models\Name
+     */
+    public function edit(Request $request){
+        $editData = Name::find($request->id);
+        return view('name.edit',compact('editData'));
+    }
+
+    /**
+     * 編集処理
+     */
+    public function update(Request $request,Name $name){
+        $name->update([
+            'name'=>$request->name,
+            'leftRight'=>$request->leftRight,
+        ]);
+
+        return redirect()->route('index')->with('message','編集完了');
+    }
+
+    /**
+     * 削除処理
+     * @param App\Models\Name
+     */
+    public function delete(Name $name){
+        $name->delete();
+        return redirect()->route('index')->with('message','削除完了');
+    }
 }

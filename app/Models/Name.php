@@ -15,4 +15,13 @@ class Name extends Model
         'leftRight',
         'nameCount',
     ];
+
+    public function leftRightChange($index){
+        if($index==0){
+            return '左';
+        }
+        if($index==1){
+            return '右';
+        }
+    }
 }

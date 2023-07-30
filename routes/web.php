@@ -33,5 +33,10 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/addName',[NameController::class,'addName'])->name('addName');
     Route::post('/addName',[NameController::class,'DBaddName'])->name('DBaddName');
     Route::get('/hideName',[NameController::class,'hideName'])->name('hideName');
+
     Route::get('/index',[NameController::class,'index'])->name('index');
+    Route::get('/edit',[NameController::class,'edit'])->name('edit');
+    Route::post('/edit/{name}',[NameController::class,'update'])->name('update');
+    Route::post('/delete/{name}',[NameController::class,'delete'])->name('delete');
+
 });
