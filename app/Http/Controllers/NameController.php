@@ -41,9 +41,10 @@ class NameController extends Controller
      * nameDBに名前を登録
      * @param App\Http\Requests\AddNameRequest $request
      * @param App\Models\Name
+     * @param Illuminate\Support\Facades\Auth
      */
     public function DBaddName(AddNameRequest $request){
-        
+
         $inputData = [
             'name'=>$request->name,
             'user_id'=>Auth::id(),
@@ -65,5 +66,16 @@ class NameController extends Controller
         session()->forget('rightName');
 
         return redirect()->route('home');
+    }
+
+    /**
+     * 登録一覧表示
+     * @param App\Models\Name
+     * @param Illuminate\Support\Facades\Auth
+     */
+    public function index(){
+        $registers = Name::where('user_id',Auth::id())->get();
+
+        return view('name.index',compact('registers'));
     }
 }

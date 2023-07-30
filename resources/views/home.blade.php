@@ -25,7 +25,7 @@
             {{-- メニュー --}}
             <div class="text-end">
                 <a href="{{route('addName')}}" class="btn btn-primary">名前登録</a>
-                <a href="" class="btn btn-primary">登録一覧</a>
+                <a href="{{route('index')}}" class="btn btn-primary">登録一覧</a>
             </div>
 
             {{-- 名前表示 --}}
